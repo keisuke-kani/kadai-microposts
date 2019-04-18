@@ -31,4 +31,22 @@ class User < ApplicationRecord
     Micropost.where(user_id: self.following_ids + [self.id])
   end
   
+  
+  
+  has_many :associations
+  has_many :likes, through: :associations, source: :like
+  
+  def like(a_micropost)
+    self.associations.find_or_create_by(like_id: a_micropost.id)
+  end
+  
+  def unlike(a_micropost)
+    association = self.associations.find_by(like_id: a_micropost.id)
+    association.destroy if association
+  end
+  
+  def like?(a_micropost)
+    self.likes.include?(a_micropost)
+  end
+  
 end
