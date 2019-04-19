@@ -2,13 +2,12 @@
   aside.col-xs-4
     .panel.panel-default
       .panel-heading
-        h3 class="panel-title"
+        h3.panel-title
           =@user.name
-      div class="panel-body"
+      .panel-body
         img class="media-object img-rounded img-responsive" src = gravatar_url(@user, { size: 500 }) alt=""
-    div
       = render 'relationships/follow_button', user: @user
-  div class="col-xs-8"
+  .col-xs-8
     ul class="nav nav-tabs nav-justified"
       li class = ('active' if current_page?(user_path(@user)))
         = link_to user_path(@user) do

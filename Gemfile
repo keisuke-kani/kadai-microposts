@@ -59,3 +59,5 @@ group :production do
 end
 
 gem 'slim-rails'
+
+gem 'simple_form'
